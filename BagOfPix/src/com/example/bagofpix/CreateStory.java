@@ -24,19 +24,22 @@ public class CreateStory extends Activity {
 	}
 	
 	public void createStory(View view) {
-		EditText et1 = (EditText) findViewById(R.id.story_name);
+		DBHandler d = new DBHandler();
+		Toast.makeText(this, d.get_stories().size() + "", 3000).show();
+		/*EditText et1 = (EditText) findViewById(R.id.story_name);
 		String name = et1.getText().toString();
 		EditText et2 = (EditText) findViewById(R.id.story_description);
 		String description = et2.getText().toString();
+		Toast.makeText(this, name + " " + description, 3000).show();
 		if (name.equals("") || description.equals("")) {
-			Toast.makeText(this, "condition true", 3000);
-			DBHandler db = new DBHandler(this);
+			Toast.makeText(this, "condition true", 3000).show();
+			DBHandler db = new DBHandler();
 			db.create_story(name, "", description);
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 		} else {
-			Toast.makeText(this, "One of the parameters is missing", 1000 );
-		}
+			Toast.makeText(this, "One of the parameters is missing", 3000).show();
+		}*/
 	}
 
 }

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBReader extends SQLiteOpenHelper{
 	
 	private static final String SQL_CREATE_ENTRIES =
-	    "CREATE TABLE Story (id INTEGER PRIIMARY KEY AUTOINCREMENT, name TEXT, url TEXT, comment TEXT)" +
+	    "CREATE TABLE Story (id INTEGER PRIIMARY KEY AUTOINCREMENT, name TEXT, url TEXT, comment TEXT) " +
 	    "CREATE TABLE Photo (id INTEGER PRIIMARY KEY AUTOINCREMENT, storyId INTEGER, url TEXT, comment TEXT)";
 	
 	private static final String SQL_DELETE_ENTRIES =
