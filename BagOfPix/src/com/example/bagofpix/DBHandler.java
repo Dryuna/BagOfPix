@@ -8,10 +8,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DBHandler {
+	static Context context;
 	DBReader mDbHelper;
 	SQLiteDatabase db;
 	
-	public DBHandler(Context context){
+	public DBHandler(){
 		mDbHelper = new DBReader(context);
 		db = mDbHelper.getWritableDatabase();	
 	}
@@ -46,6 +47,15 @@ public class DBHandler {
 		db.insert("Story", null ,values);
 	}
 	
+	public void delete_story(int storyID){
+		// Define 'where' part of query.
+		String selection = "storyId";
+		// Specify arguments in placeholder order.
+		String[] selectionArgs = {storyID+""};
+		// Issue SQL statement.
+		db.delete("Story", selection, selectionArgs);
+	}
+
 	public ArrayList<Photo> get_photos(int storyID){
 		String[] projection = {"id", "url", "comment"};
 		String selection = "storyId";
@@ -75,5 +85,14 @@ public class DBHandler {
 		values.put("comment", comment);
 		
 		db.insert("Photo", null ,values);
+	}
+	
+	public void delete_photo(int photoID){
+		// Define 'where' part of query.
+		String selection = "photoId";
+		// Specify arguments in placeholder order.
+		String[] selectionArgs = {photoID+""};
+		// Issue SQL statement.
+		db.delete("Photo", selection, selectionArgs);
 	}
 }
