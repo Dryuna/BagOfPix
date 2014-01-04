@@ -4,5 +4,10 @@
     <string name="app_name">BagOfPix</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="new_story">New Story</string>
+    <string name="title_activity_create_story">CreateStory</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="create">Create</string>
 
 </resources>
