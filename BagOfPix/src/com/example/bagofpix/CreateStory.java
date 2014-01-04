@@ -2,8 +2,11 @@ package com.example.bagofpix;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class CreateStory extends Activity {
 
@@ -21,7 +24,19 @@ public class CreateStory extends Activity {
 	}
 	
 	public void createStory(View view) {
-		// TODO
+		EditText et1 = (EditText) findViewById(R.id.story_name);
+		String name = et1.getText().toString();
+		EditText et2 = (EditText) findViewById(R.id.story_description);
+		String description = et2.getText().toString();
+		if (name.equals("") || description.equals("")) {
+			Toast.makeText(this, "condition true", 3000);
+			DBHandler db = new DBHandler(this);
+			db.create_story(name, "", description);
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+		} else {
+			Toast.makeText(this, "One of the parameters is missing", 1000 );
+		}
 	}
 
 }
