@@ -40,10 +40,10 @@ public class MainActivity extends Activity {
 			    	LinearLayout ll = (LinearLayout) view;
 			    	for (int i=0; i < ll.getChildCount(); i++){
 			    	      View v = ll.getChildAt(i);
-			    	      if (v instanceof TextView) {
+			    	      if (v instanceof ImageView) {
 			    	    	  Intent intent = new Intent(MainActivity.this, ViewStory.class);
-			    	    	  TextView textView = (TextView) v;
-			    	    	  intent.putExtra("storyName", textView.getText().toString());
+			    	    	  ImageView imageView = (ImageView) v;
+			    	    	  intent.putExtra("storyId", imageView.getContentDescription().toString());
 						      startActivity(intent);
 						      break;
 			    	      }
@@ -56,6 +56,7 @@ public class MainActivity extends Activity {
 			imView.setLayoutParams(lpImView);
 			imView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 			imView.setImageResource(R.drawable.ic_launcher);
+			imView.setContentDescription(a.get(i).getId() + "");
 			// Create text view
 			TextView textView = new TextView(this);
 			LayoutParams lpTextView = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
