@@ -8,16 +8,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DBHandler {
-	Context context;
+	DBReader mDbHelper;
+	SQLiteDatabase db;
 	
 	public DBHandler(Context context){
-		this.context = context;
+		mDbHelper = new DBReader(context);
+		db = mDbHelper.getWritableDatabase();	
 	}
 	
 	public ArrayList<Story> get_stories(){
-		DBReader mDbHelper = new DBReader(context);
-		SQLiteDatabase db = mDbHelper.getWritableDatabase();
-		
 		String[] projection = {"id", "name", "url", "comment"};
 		
 		Cursor c = db.query("Story",  projection, null, null, null, null, null);
@@ -39,9 +38,6 @@ public class DBHandler {
 	}
 	
 	public void create_story(String name, String url, String comment){
-		DBReader mDbHelper = new DBReader(context);
-		SQLiteDatabase db = mDbHelper.getWritableDatabase();
-		
 		ContentValues values = new ContentValues();
 		values.put("name", name);
 		values.put("url", url);
@@ -51,11 +47,33 @@ public class DBHandler {
 	}
 	
 	public ArrayList<Photo> get_photos(int storyID){
+		String[] projection = {"id", "url", "comment"};
+		String selection = "storyId";
+		String[] selectionArgs = {""+storyID};
 		
-		return null;
+		Cursor c = db.query("Story",  projection, selection, selectionArgs, null, null, null);
+		
+		ArrayList<Photo> photos = new ArrayList<Photo>();
+		c.moveToFirst();
+		while(!c.isAfterLast()){
+			int id = c.getInt(c.getColumnIndexOrThrow("id"));
+			String url, comment;
+			url = c.getString(c.getColumnIndexOrThrow("url"));
+			comment = c.getString(c.getColumnIndexOrThrow("comment"));
+			
+			photos.add(new Photo(id, storyID, url, comment));
+			c.moveToNext();
+		}
+		
+		return photos;
 	}
 	
 	public void insert_photo(int storyID, String url, String comment){
+		ContentValues values = new ContentValues();
+		values.put("storyId", storyID);
+		values.put("url", url);
+		values.put("comment", comment);
 		
+		db.insert("Photo", null ,values);
 	}
 }

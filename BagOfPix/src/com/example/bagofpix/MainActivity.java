@@ -1,13 +1,7 @@
 package com.example.bagofpix;
 
-
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
