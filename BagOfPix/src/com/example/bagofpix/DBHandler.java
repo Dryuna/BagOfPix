@@ -8,10 +8,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DBHandler {
+	static Context context;
 	DBReader mDbHelper;
 	SQLiteDatabase db;
 	
-	public DBHandler(Context context){
+	public DBHandler(){
 		mDbHelper = new DBReader(context);
 		db = mDbHelper.getWritableDatabase();	
 	}
