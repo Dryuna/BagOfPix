@@ -26,6 +26,10 @@
             android:name="com.example.bagofpix.CreateStory"
             android:label="@string/title_activity_create_story" >
         </activity>
+        <activity
+            android:name="com.example.bagofpix.ViewStory"
+            android:label="@string/title_activity_view_story" >
+        </activity>
     </application>
 
 </manifest>

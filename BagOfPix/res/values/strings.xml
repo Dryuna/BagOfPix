@@ -9,5 +9,6 @@
     <string name="name">Name</string>
     <string name="description">Description</string>
     <string name="create">Create</string>
+    <string name="title_activity_view_story">ViewStory</string>
 
 </resources>
