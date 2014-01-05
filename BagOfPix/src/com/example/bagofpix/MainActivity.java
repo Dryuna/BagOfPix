@@ -84,9 +84,5 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, CreateStory.class);
 	    startActivity(intent);
 	}
-	
-	public void viewStory(View view) {
-		// TODO connect to view story activity
-	}
 
 }

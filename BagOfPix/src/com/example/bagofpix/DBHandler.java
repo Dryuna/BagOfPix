@@ -95,4 +95,14 @@ public class DBHandler {
 		// Issue SQL statement.
 		db.delete("Photo", selection, selectionArgs);
 	}
+	
+	public Story get_story(int storyId) {
+		ArrayList<Story> stories = get_stories();
+		for (int i = 0; i < stories.size(); i++) {
+			if (stories.get(i).getId() == storyId) {
+				return stories.get(i); 
+			}
+		}
+		return null;
+	}
 }
