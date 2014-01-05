@@ -49,7 +49,7 @@ public class DBHandler {
 	
 	public void delete_story(int storyID){
 		// Define 'where' part of query.
-		String selection = "storyId";
+		String selection = "id = ?";
 		// Specify arguments in placeholder order.
 		String[] selectionArgs = {storyID+""};
 		// Issue SQL statement.
@@ -89,7 +89,7 @@ public class DBHandler {
 	
 	public void delete_photo(int photoID){
 		// Define 'where' part of query.
-		String selection = "photoId";
+		String selection = "id = ?";
 		// Specify arguments in placeholder order.
 		String[] selectionArgs = {photoID+""};
 		// Issue SQL statement.
