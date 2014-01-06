@@ -18,7 +18,7 @@ import android.provider.MediaStore;
 public class ImportPhoto extends Activity {
 	private static final int SELECT_PHOTO = 100;
 	private String url = null;
-	private static int story_id = -1;
+	private int story_id = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class ImportPhoto extends Activity {
 		loadGallery();
 		Intent intent = getIntent();
 		story_id = Integer.parseInt(intent.getStringExtra("storyId"));
+		Toast.makeText(this, "Story id " + story_id, 5000).show();
 	}
 
 	public void loadGallery() {
@@ -42,10 +43,16 @@ public class ImportPhoto extends Activity {
 			return;
 		EditText textBox = (EditText) findViewById(R.id.comment);
 		String comment = textBox.getText().toString();
-		// TODO: Save photo to database
+		
+		DBHandler db = new DBHandler();
+		db.insert_photo(story_id, url, comment);
+		
 		Intent intent = new Intent(this, ViewStory.class);
-		intent.putExtra("storyId", story_id);
+		intent.putExtra("storyId", story_id+""); 
 		startActivity(intent);
+		
+		//Intent intent = new Intent(this, MainActivity.class);
+		//startActivity(intent);
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode,
