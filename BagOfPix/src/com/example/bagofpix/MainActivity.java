@@ -7,6 +7,8 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
@@ -55,7 +57,12 @@ public class MainActivity extends Activity {
 			LayoutParams lpImView = new LayoutParams(300,300);
 			imView.setLayoutParams(lpImView);
 			imView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-			imView.setImageResource(R.drawable.ic_launcher);
+			if (db.get_photos(a.get(i).getId()).size() == 0) {
+				imView.setImageResource(R.drawable.ic_launcher);
+			} else {
+				Bitmap bm = BitmapFactory.decodeFile(a.get(i).getUrl());
+				imView.setImageBitmap(bm);
+			}
 			imView.setContentDescription(a.get(i).getId() + "");
 			// Create text view
 			TextView textView = new TextView(this);

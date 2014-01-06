@@ -58,7 +58,7 @@ public class DBHandler {
 
 	public ArrayList<Photo> get_photos(int storyID){
 		String[] projection = {"id", "url", "comment"};
-		String selection = "storyId";
+		String selection = "storyId = ?";
 		String[] selectionArgs = {""+storyID};
 		
 		Cursor c = db.query("Story",  projection, selection, selectionArgs, null, null, null);
