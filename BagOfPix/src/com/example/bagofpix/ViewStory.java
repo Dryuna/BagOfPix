@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,6 +44,7 @@ public class ViewStory extends Activity {
 			TextView tView = new TextView(this);
 			String imgComment = photos.get(i).getComment();
 			tView.setText(imgComment);
+			tView.setGravity(Gravity.CENTER);
 			tView.setLayoutParams(lp);
 			ll.addView(tView);
 		}
