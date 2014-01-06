@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ViewStory extends Activity {
@@ -19,6 +20,11 @@ public class ViewStory extends Activity {
 		Story story = db.get_story(storyId);
 		TextView textView = (TextView) findViewById(R.id.story_name_view);
 		textView.setText(story.getName());
+		LinearLayout ll = (LinearLayout) findViewById(R.id.viewStoryLayout);
+		int numOfPhotos = db.get_photos(storyId).size();
+		TextView tv = new TextView(this);
+		tv.setText(numOfPhotos +"");
+		ll.addView(tv);
 	}
 
 	@Override

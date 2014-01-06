@@ -6,8 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBReader extends SQLiteOpenHelper{
 	
-	private static final String SQL_CREATE_ENTRIES =
-	    "CREATE TABLE Story (id INTEGER PRIMARY KEY, name TEXT, url TEXT, comment TEXT); " +
+	private static final String SQL_CREATE_ENTRIES1 =
+	    "CREATE TABLE Story (id INTEGER PRIMARY KEY, name TEXT, url TEXT, comment TEXT); ";
+	private static final String SQL_CREATE_ENTRIES2 =
 	    "CREATE TABLE Photo (id INTEGER PRIMARY KEY, storyId INTEGER, url TEXT, comment TEXT); ";
 	
 	private static final String SQL_DELETE_ENTRIES =
@@ -22,7 +23,8 @@ public class DBReader extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_CREATE_ENTRIES1);
+        db.execSQL(SQL_CREATE_ENTRIES2);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
