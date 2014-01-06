@@ -30,6 +30,10 @@
             android:name="com.example.bagofpix.ViewStory"
             android:label="@string/title_activity_view_story" >
         </activity>
+        <activity
+            android:name="com.example.bagofpix.ImportPhoto"
+            android:label="@string/title_activity_import_photo" >
+        </activity>
     </application>
 
 </manifest>

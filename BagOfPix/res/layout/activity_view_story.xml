@@ -26,6 +26,14 @@
 	        android:gravity="right"
 	        android:onClick="deleteStory" />
         
+        <Button 
+	        android:id="@+id/import_photo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:text="@string/import_photo"
+	        android:gravity="right"
+	        android:onClick="importPhoto" />
+	        
     </LinearLayout>
     
 </LinearLayout>

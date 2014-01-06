@@ -11,5 +11,8 @@
     <string name="create">Create</string>
     <string name="title_activity_view_story">ViewStory</string>
     <string name="delete">Delete</string>
-
+    <string name="import_photo">Add Photo</string>
+    <string name="title_activity_import_photo">ImportPhoto</string>
+	<string name="add_comment">Add comment</string>
+	<string name="save">Save</string>
 </resources>

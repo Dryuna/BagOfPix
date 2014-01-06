@@ -36,5 +36,13 @@ public class ViewStory extends Activity {
 		Intent i = new Intent(this, MainActivity.class);
 		startActivity(i);
 	}
+	
+	public void importPhoto(View view) {
+		Intent intent = getIntent();
+		int storyId = Integer.parseInt(intent.getStringExtra("storyId"));
+		Intent i = new Intent(this, ImportPhoto.class);
+		i.putExtra("storyId", storyId + "");
+		startActivity(i);
+	}
 
 }
