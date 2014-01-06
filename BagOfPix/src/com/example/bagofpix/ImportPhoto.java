@@ -1,17 +1,24 @@
 package com.example.bagofpix;
 
+import android.R.layout;
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.support.v4.app.NavUtils;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.provider.MediaStore;
 
@@ -29,7 +36,6 @@ public class ImportPhoto extends Activity {
 		loadGallery();
 		Intent intent = getIntent();
 		story_id = Integer.parseInt(intent.getStringExtra("storyId"));
-		Toast.makeText(this, "Story id " + story_id, 5000).show();
 	}
 
 	public void loadGallery() {
@@ -55,6 +61,7 @@ public class ImportPhoto extends Activity {
 		//startActivity(intent);
 	}
 
+	@SuppressLint("NewApi")
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent imageReturnedIntent) {
 		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
@@ -68,8 +75,14 @@ public class ImportPhoto extends Activity {
 				cursor.moveToFirst();
 				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 				url = cursor.getString(columnIndex);
-				Toast.makeText(this, url, 3000).show();
 				cursor.close();
+				ImageView imView = new ImageView(this);
+				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				imView.setLayoutParams(lp);
+				Bitmap bm = BitmapFactory.decodeFile(url);
+				imView.setImageBitmap(bm);
+				LinearLayout ll = (LinearLayout) findViewById(R.id.image_container);
+				ll.addView(imView);
 			}
 		}
 	}
