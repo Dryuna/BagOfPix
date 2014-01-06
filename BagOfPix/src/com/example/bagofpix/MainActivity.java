@@ -61,7 +61,6 @@ public class MainActivity extends Activity {
 			lpImView.setMargins(10, 10, 10, 10);
 			imView.setLayoutParams(lpImView);
 			imView.setScaleType(ImageView.ScaleType.FIT_XY);
-			Toast.makeText(this, "id " + a.get(i).getId() + " " + db.get_photos(a.get(i).getId()).size(), Toast.LENGTH_LONG).show();
 			if (db.get_photos(a.get(i).getId()).size() == 0) {
 				imView.setImageResource(R.drawable.ic_launcher);
 			} else {
