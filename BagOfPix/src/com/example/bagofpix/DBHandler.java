@@ -48,8 +48,10 @@ public class DBHandler {
 	}
 	
 	public void delete_story(int storyID){
-		for (int i = 0; i < get_photos(storyID).size(); i++) {
-			delete_photo(get_photos(storyID).get(0).getId());
+		int size = get_photos(storyID).size();
+		ArrayList<Photo> photos = get_photos(storyID);
+		for (int i = 0; i < size; i++) {
+			delete_photo(photos.get(i).getId());
 		}
 		
 		// Define 'where' part of query.
