@@ -48,6 +48,12 @@ public class DBHandler {
 	}
 	
 	public void delete_story(int storyID){
+		int size = get_photos(storyID).size();
+		ArrayList<Photo> photos = get_photos(storyID);
+		for (int i = 0; i < size; i++) {
+			delete_photo(photos.get(i).getId());
+		}
+		
 		// Define 'where' part of query.
 		String selection = "id = ?";
 		// Specify arguments in placeholder order.
@@ -58,10 +64,10 @@ public class DBHandler {
 
 	public ArrayList<Photo> get_photos(int storyID){
 		String[] projection = {"id", "url", "comment"};
-		String selection = "storyId = ?";
+		String selection = " storyId = ?";
 		String[] selectionArgs = {""+storyID};
 		
-		Cursor c = db.query("Story",  projection, selection, selectionArgs, null, null, null);
+		Cursor c = db.query("Photo",  projection, selection, selectionArgs, null, null, null);
 		
 		ArrayList<Photo> photos = new ArrayList<Photo>();
 		c.moveToFirst();

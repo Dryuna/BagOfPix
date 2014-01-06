@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 			// Create new wrapper linear layout
 			LinearLayout ll = new LinearLayout(this);
 			LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-			lp.setMargins(0, 10, 0, 0);
+			lp.setMargins(10, 10, 10, 10);
 			ll.setLayoutParams(lp);
 			ll.setOrientation(LinearLayout.HORIZONTAL);
 			ll.setClickable(true);
@@ -54,25 +54,29 @@ public class MainActivity extends Activity {
 			    	    	  intent.putExtra("storyId", imageView.getContentDescription().toString());
 						      startActivity(intent);
 						      break;
-			    	      }
+			    	      } 
 			    	}  
 			    }
 			   });
 			// Create image view
 			ImageView imView = new ImageView(this);
-			LayoutParams lpImView = new LayoutParams(300,300);
+			LayoutParams lpImView = new LayoutParams(200,200);
+			lpImView.setMargins(10, 10, 10, 10);
 			imView.setLayoutParams(lpImView);
-			imView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+			imView.setScaleType(ImageView.ScaleType.FIT_XY);
+			Toast.makeText(this, "id " + a.get(i).getId() + " " + db.get_photos(a.get(i).getId()).size(), Toast.LENGTH_LONG).show();
 			if (db.get_photos(a.get(i).getId()).size() == 0) {
 				imView.setImageResource(R.drawable.ic_launcher);
 			} else {
-				Bitmap bm = BitmapFactory.decodeFile(a.get(i).getUrl());
+				String imgUrl = db.get_photos(a.get(i).getId()).get(0).getUrl();
+				Bitmap bm = BitmapFactory.decodeFile(imgUrl);
 				imView.setImageBitmap(bm);
 			}
 			imView.setContentDescription(a.get(i).getId() + "");
 			// Create text view
 			TextView textView = new TextView(this);
 			LayoutParams lpTextView = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+			lpTextView.setMargins(10, 10, 10, 10);
 			textView.setLayoutParams(lpTextView);
 			textView.setGravity(Gravity.CENTER_VERTICAL);
 			textView.setTextSize(25);

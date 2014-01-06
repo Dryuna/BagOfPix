@@ -3,7 +3,7 @@ package com.example.bagofpix;
 public class Photo {
 	private int id, storyID;
 	private String comment, url;
-	public Photo(int id, int storyID, String comment, String url) {
+	public Photo(int id, int storyID, String url, String comment) {
 		super();
 		this.id = id;
 		this.storyID = storyID;
